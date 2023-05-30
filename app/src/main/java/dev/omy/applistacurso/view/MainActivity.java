@@ -38,5 +38,10 @@ public class MainActivity extends AppCompatActivity {
         btn_salvar = findViewById(R.id.btn_salvar);
         btn_finalizar = findViewById(R.id.btn_finalizar);
 
+        editText_nome.setText(pessoa.getPrimeiroNome());
+        editText_sobreNome.setText(pessoa.getSobreNome());
+        editText_cursoDesejado.setText(pessoa.getCursoDesejado());
+        editText_telContato.setText(pessoa.getTelContato());
+
     }
 }
