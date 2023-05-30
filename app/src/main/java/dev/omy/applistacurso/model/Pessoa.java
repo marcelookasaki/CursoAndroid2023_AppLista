@@ -40,4 +40,16 @@ public class Pessoa {
     public void setTelContato(String telContato) {
         this.telContato = telContato;
     }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "primeiroNome ='" + primeiroNome + '\'' +
+                ", sobreNome ='" + sobreNome + '\'' +
+                ", cursoDesejado ='" + cursoDesejado + '\'' +
+                ", telefoneContato ='" + telContato + '\'' +
+                '}';
+    }
+
+
 }
