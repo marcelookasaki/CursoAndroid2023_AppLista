@@ -1,8 +1,10 @@
-package dev.omy.applistacurso;
+package dev.omy.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import dev.omy.applistacurso.R;
 
 public class MainActivity extends AppCompatActivity {
 
