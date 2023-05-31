@@ -1,12 +1,24 @@
 package dev.omy.applistacurso.controller;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import dev.omy.applistacurso.model.Pessoa;
+import dev.omy.applistacurso.view.MainActivity;
 
 public class PessoaController {
+
+    SharedPreferences preferences;
+
+    SharedPreferences.Editor listaVip;
+    public static final String NOME_PREFERENCES = "pref_listVIP";
+
+    public PessoaController(MainActivity mainActivity) {
+        preferences = mainActivity.getSharedPreferences(NOME_PREFERENCES, 0);
+        listaVip = preferences.edit();
+    }
 
     @NonNull
     @Override
@@ -17,9 +29,31 @@ public class PessoaController {
         return super.toString();
     }
 
+    public void criarSharedPreferences() {
+
+    }
+
     public void salvar(Pessoa pessoa) {
 
-        Log.d("MVC_Controller", "Salvo: " +pessoa.toString());
+        listaVip.putString("primeiroNome", pessoa.getPrimeiroNome());
+        listaVip.putString("sobreNome", pessoa.getSobreNome());
+        listaVip.putString("cursoDesejado", pessoa.getCursoDesejado());
+        listaVip.putString("telContato", pessoa.getTelContato());
+        listaVip.apply();
 
+        Log.d("MVC_Controller", "Salvo: " + pessoa.toString());
+
+    }
+
+    public void buscar(Pessoa pessoa) {
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", ""));
+        pessoa.setSobreNome(preferences.getString("sobreNome", ""));
+        pessoa.setCursoDesejado(preferences.getString("cursoDesejado", ""));
+        pessoa.setTelContato(preferences.getString("telContato", ""));
+    }
+
+    public void limpar() {
+        listaVip.clear();
+        listaVip.apply();
     }
 }
