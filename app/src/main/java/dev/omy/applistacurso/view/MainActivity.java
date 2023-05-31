@@ -10,11 +10,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dev.omy.applistacurso.R;
+import dev.omy.applistacurso.controller.PessoaController;
 import dev.omy.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
     Pessoa pessoa;
+    PessoaController pessoaController;
 
     EditText editText_nome;
     EditText editText_sobreNome;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         pessoa = new Pessoa();
+        pessoaController = new PessoaController();
+        pessoaController.toString();
 
         editText_nome = findViewById(R.id.editText_nome);
         editText_sobreNome = findViewById((R.id.editText_sobreNome));
@@ -49,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
         btn_limpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 editText_nome.setText("");
-                 editText_sobreNome.setText("");
-                 editText_cursoDesejado.setText("");
-                 editText_telContato.setText("");
+                editText_nome.setText("");
+                editText_sobreNome.setText("");
+                editText_cursoDesejado.setText("");
+                editText_telContato.setText("");
             }
         });
 
@@ -74,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelContato(editText_telContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
+
+                pessoaController.salvar(pessoa);
+
             }
         });
 
