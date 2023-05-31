@@ -12,14 +12,13 @@ import android.widget.Toast;
 
 import dev.omy.applistacurso.R;
 import dev.omy.applistacurso.controller.PessoaController;
+
 import dev.omy.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
     public static final String NOME_PREFERENCES = "pref_listVIP";
-
-
 
     Pessoa pessoa;
     PessoaController pessoaController;
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
         SharedPreferences.Editor listaVIP = preferences.edit();
