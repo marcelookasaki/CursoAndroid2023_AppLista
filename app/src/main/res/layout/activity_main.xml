@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/design_default_color_primary_dark"
-        android:text="@string/aplicativo_lista_vip_curso_android"
+        android:text="@string/nome_aplicativo"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"

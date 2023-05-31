@@ -2,9 +2,13 @@ package dev.omy.applistacurso.model;
 
 public class Pessoa {
 
-    private String primeiroNome, sobreNome, cursoDesejado, telContato;
+    private String primeiroNome;
+    private String sobreNome;
+    private String cursoDesejado;
+    private String telContato;
 
-    public Pessoa() {}
+    public Pessoa() {
+    }
 
     public String getPrimeiroNome() {
         return primeiroNome;
@@ -36,6 +40,17 @@ public class Pessoa {
 
     public void setTelContato(String telContato) {
         this.telContato = telContato;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "primeiroNome ='" + primeiroNome + '\'' +
+                ", sobreNome ='" + sobreNome + '\'' +
+                ", cursoDesejado ='" + cursoDesejado + '\'' +
+                ", telefoneContato ='" + telContato + '\'' +
+                '}';
     }
 
 }
