@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import dev.omy.applistacurso.R;
@@ -18,6 +17,7 @@ import dev.omy.applistacurso.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
+    SharedPreferences.Editor listaVip;
     public static final String NOME_PREFERENCES = "pref_listVIP";
 
     Pessoa pessoa;
@@ -39,9 +39,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor listaVIP = preferences.edit();
+        listaVip = preferences.edit();
 
         pessoa = new Pessoa();
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", ""));
+        pessoa.setSobreNome(preferences.getString("sobreNome", ""));
+        pessoa.setCursoDesejado(preferences.getString("cursoDesejado", ""));
+        pessoa.setTelContato(preferences.getString("telContato", ""));
+
         pessoaController = new PessoaController();
         pessoaController.toString();
 
@@ -53,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btn_salvar = findViewById(R.id.btn_salvar);
         btn_finalizar = findViewById(R.id.btn_finalizar);
 
-        editText_nome.setText(pessoa.getSobreNome());
+        editText_nome.setText(pessoa.getPrimeiroNome());
         editText_sobreNome.setText(pessoa.getSobreNome());
         editText_cursoDesejado.setText(pessoa.getCursoDesejado());
         editText_telContato.setText(pessoa.getTelContato());
@@ -66,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
                 editText_sobreNome.setText("");
                 editText_cursoDesejado.setText("");
                 editText_telContato.setText("");
+
+                listaVip.clear();
+                listaVip.apply();
             }
         });
 
@@ -88,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
 
-                listaVIP.putString("primeiroNome", pessoa.getPrimeiroNome());
-                listaVIP.putString("sobreNome", pessoa.getSobreNome());
-                listaVIP.putString("cursoDesejado", pessoa.getCursoDesejado());
-                listaVIP.putString("telContato", pessoa.getTelContato());
-                listaVIP.apply();
+                listaVip.putString("primeiroNome", pessoa.getPrimeiroNome());
+                listaVip.putString("sobreNome", pessoa.getSobreNome());
+                listaVip.putString("cursoDesejado", pessoa.getCursoDesejado());
+                listaVip.putString("telContato", pessoa.getTelContato());
+                listaVip.apply();
 
                 pessoaController.salvar(pessoa);
 
