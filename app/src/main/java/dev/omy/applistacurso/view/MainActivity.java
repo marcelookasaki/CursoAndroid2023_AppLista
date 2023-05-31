@@ -17,6 +17,7 @@ import dev.omy.applistacurso.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
+    SharedPreferences.Editor listaVip;
     public static final String NOME_PREFERENCES = "pref_listVIP";
 
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor listaVIP = preferences.edit();
+        listaVip = preferences.edit();
 
         pessoa = new Pessoa();
         pessoa.setPrimeiroNome(preferences.getString("primeiroNome", ""));
@@ -71,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 editText_sobreNome.setText("");
                 editText_cursoDesejado.setText("");
                 editText_telContato.setText("");
+
+                listaVip.clear();
+                listaVip.apply();
             }
         });
 
@@ -93,11 +97,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
 
-                listaVIP.putString("primeiroNome", pessoa.getPrimeiroNome());
-                listaVIP.putString("sobreNome", pessoa.getSobreNome());
-                listaVIP.putString("cursoDesejado", pessoa.getCursoDesejado());
-                listaVIP.putString("telContato", pessoa.getTelContato());
-                listaVIP.apply();
+                listaVip.putString("primeiroNome", pessoa.getPrimeiroNome());
+                listaVip.putString("sobreNome", pessoa.getSobreNome());
+                listaVip.putString("cursoDesejado", pessoa.getCursoDesejado());
+                listaVip.putString("telContato", pessoa.getTelContato());
+                listaVip.apply();
 
                 pessoaController.salvar(pessoa);
 
