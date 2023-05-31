@@ -42,6 +42,7 @@ public class Pessoa {
         this.telContato = telContato;
     }
 
+
     @Override
     public String toString() {
         return "Pessoa{" +
@@ -51,6 +52,5 @@ public class Pessoa {
                 ", telefoneContato ='" + telContato + '\'' +
                 '}';
     }
-
 
 }

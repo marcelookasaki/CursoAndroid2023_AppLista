@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import dev.omy.applistacurso.R;
 import dev.omy.applistacurso.controller.PessoaController;
+
 import dev.omy.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         pessoa = new Pessoa();
-
 
         pessoaController = new PessoaController(MainActivity.this);
         pessoaController.toString();
