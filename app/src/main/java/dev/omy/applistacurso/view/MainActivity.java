@@ -2,11 +2,12 @@ package dev.omy.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Curso curso;
     CursoController cursoController;
 
-    List<Curso> listaCursos;
+    List<String> nomesDosCursos;
 
     EditText editText_nome;
     EditText editText_sobreNome;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn_limpar;
     Button btn_salvar;
     Button btn_finalizar;
+
+    Spinner spinnerCursos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         pessoaController.buscar(pessoa);
 
         cursoController = new CursoController();
-        listaCursos = cursoController.getListaCursos();
+        nomesDosCursos = cursoController.dadosParaSpinner();
 
         editText_nome = findViewById(R.id.editText_nome);
         editText_sobreNome = findViewById((R.id.editText_sobreNome));
@@ -58,11 +61,21 @@ public class MainActivity extends AppCompatActivity {
         btn_limpar = findViewById(R.id.btn_limpar);
         btn_salvar = findViewById(R.id.btn_salvar);
         btn_finalizar = findViewById(R.id.btn_finalizar);
+        spinnerCursos = findViewById(R.id.spinnerCursos);
 
         editText_nome.setText(pessoa.getPrimeiroNome());
         editText_sobreNome.setText(pessoa.getSobreNome());
         editText_cursoDesejado.setText(pessoa.getCursoDesejado());
         editText_telContato.setText(pessoa.getTelContato());
+
+        // Adapter
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout
+                .simple_list_item_1, cursoController.dadosParaSpinner());
+
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+        spinnerCursos.setAdapter(arrayAdapter);
 
 
         btn_limpar.setOnClickListener(new View.OnClickListener() {
