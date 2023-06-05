@@ -8,4 +8,5 @@
     <string name="limpar">limpar</string>
     <string name="salvar">salvar</string>
     <string name="finalizar">finalizar</string>
+    <string name="selecione_um_curso">Selecione um curso...</string>
 </resources>

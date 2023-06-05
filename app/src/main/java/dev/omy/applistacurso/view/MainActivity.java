@@ -9,14 +9,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 import dev.omy.applistacurso.R;
+import dev.omy.applistacurso.controller.CursoController;
 import dev.omy.applistacurso.controller.PessoaController;
+import dev.omy.applistacurso.model.Curso;
 import dev.omy.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
     Pessoa pessoa;
     PessoaController pessoaController;
+
+    Curso curso;
+    CursoController cursoController;
+
+    List<Curso> listaCursos;
 
     EditText editText_nome;
     EditText editText_sobreNome;
@@ -38,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         pessoaController = new PessoaController(MainActivity.this);
         pessoaController.toString();
         pessoaController.buscar(pessoa);
+
+        cursoController = new CursoController();
+        listaCursos = cursoController.getListaCursos();
 
         editText_nome = findViewById(R.id.editText_nome);
         editText_sobreNome = findViewById((R.id.editText_sobreNome));
