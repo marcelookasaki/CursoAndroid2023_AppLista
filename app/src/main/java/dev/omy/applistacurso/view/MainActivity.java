@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pessoa.setPrimeiroNome(editText_nome.getText().toString());
                 pessoa.setSobreNome(editText_sobreNome.getText().toString());
-                pessoa.setCursoDesejado(editText_cursoDesejado.getText().toString());
+                pessoa.setCursoDesejado(spinnerCursos.getSelectedItem().toString());
                 pessoa.setTelContato(editText_telContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
